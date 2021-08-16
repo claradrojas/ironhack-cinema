@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Header(){
+  return <h1>Welcome to Ironhack</h1>
+}
+
+function Main(){
+  return <main>
+    <Movie title="The Godfather" />
+    <Movie title="Interstellar" />
+    <Movie title="Inception" />
+    <Movie title="Coco" />
+  </main>
+}
+
+function Movie(props){
+  return ( 
+    <section className="movie">
+      <h5>{props.title}</h5>
+    </section>
+  )
+}
+
+function Footer(){
+  return <footer>Ironhack Copyright</footer>
+}
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header />
+     <Main />
+     <Footer />
     </div>
   );
 }
