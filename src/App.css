@@ -36,6 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.label, input {
+  display: block;
+  margin: 5px auto;
+  min-width: 180px
+}
+
 .msg-info {
   margin: 2rem auto;
   border:1px solid

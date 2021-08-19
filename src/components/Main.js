@@ -2,6 +2,7 @@ import React from 'react'
 import Movie from "./Movie"
 import movies from "../data/movies.json"
 import AddMovie from "./AddMovie"
+import SearchBar from './SearchBar'
 
 
 class Main extends React.Component {
@@ -9,6 +10,7 @@ class Main extends React.Component {
   state = {
     moviesArr: movies
   }
+
 
   deleteMovie = (movieId) => {
     this.setState(prevState => {
@@ -18,18 +20,42 @@ class Main extends React.Component {
     })
   }
 
+// here we pass the new movie data(fields), and add it to the prev array stored in State
+  createMovie = (movieData) => {
+    this.setState(prevState => {
+      return {
+        moviesArr: [...prevState.moviesArr, movieData]
+      }
+    })
+  }
+
 
   renderMovies() {
     return this.state.moviesArr.map(movieObj => {
-      return <Movie key={movieObj.id} {...movieObj} methodToDeleteMovie={() => { this.deleteMovie(movieObj.id) }}
+      return <Movie 
+      key={movieObj.id} 
+      {...movieObj} 
+      methodToDeleteMovie={() => { this.deleteMovie(movieObj.id) }}
       />
     })
   }
 
+searchMovie = (searchData) => {
+  //console.log(searchData)
+    this.setState(prevState => {
+      return {
+        moviesArr: prevState.moviesArr.filter(movie => movie.title.toLowerCase().includes(searchData.searchName.toLowerCase()))
+      }
+    })
+}
+
   render() {
     return (
       <main>
-        <AddMovie />
+        
+        <SearchBar addSearchHandler={this.searchMovie}/>
+        {/* here we pass props, a reference to the method createMovie */}
+        <AddMovie addMovieHandler={this.createMovie}/> 
         <div className="movie-container">
           {
             this.state.moviesArr.length > 0
