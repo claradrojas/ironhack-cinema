@@ -36,11 +36,39 @@
     transform: rotate(360deg);
   }
 }
-
+.msg-info {
+  margin: 2rem auto;
+  border:1px solid
+}
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .movie {
-  border:1px solid grey;
-  margin: 2rem auto;
-  padding: 2rem;
-  max-width: 50vw
+  outline: 1px solid grey;
+  padding: 0.5rem;
+  margin: 2.5% auto;
+  flex: 0 1 20%;
 }
+
+
+
+.banner {
+  background-color:orange;
+  color: black;
+  font-weight: bold;
+  padding: 5px 0;
+  
+}
+
+.banner.banner-popular {
+  background-color: rgb(95, 24, 95);
+}
+
+.banner.banner-average {
+  background-color: rgb(15, 5, 15);
+}
+
+
